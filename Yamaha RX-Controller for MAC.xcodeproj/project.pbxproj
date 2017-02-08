@@ -12,6 +12,9 @@
 		BFCF10291E4B3A2E005555F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10281E4B3A2E005555F9 /* ViewController.m */; };
 		BFCF102B1E4B3A2E005555F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCF102A1E4B3A2E005555F9 /* Assets.xcassets */; };
 		BFCF102E1E4B3A2E005555F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCF102C1E4B3A2E005555F9 /* Main.storyboard */; };
+		BFCF10371E4B3E4C005555F9 /* CommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10361E4B3E4C005555F9 /* CommunicationController.m */; };
+		BFDB9FCA1E4B646100781EA2 /* StatusBarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDB9FC91E4B646100781EA2 /* StatusBarMenu.m */; };
+		BFE6E0381E4B7AC000090B12 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE6E0371E4B7AC000090B12 /* XMLReader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,13 @@
 		BFCF102A1E4B3A2E005555F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFCF102D1E4B3A2E005555F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFCF102F1E4B3A2E005555F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFCF10351E4B3E4C005555F9 /* CommunicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationController.h; sourceTree = "<group>"; };
+		BFCF10361E4B3E4C005555F9 /* CommunicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationController.m; sourceTree = "<group>"; };
+		BFDB9FC21E4B4FF100781EA2 /* Yamaha RX-Controller for MAC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Yamaha RX-Controller for MAC.entitlements"; sourceTree = "<group>"; };
+		BFDB9FC81E4B646100781EA2 /* StatusBarMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusBarMenu.h; path = ../StatusBarMenu.h; sourceTree = "<group>"; };
+		BFDB9FC91E4B646100781EA2 /* StatusBarMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBarMenu.m; path = ../StatusBarMenu.m; sourceTree = "<group>"; };
+		BFE6E0361E4B7AC000090B12 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		BFE6E0371E4B7AC000090B12 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +66,20 @@
 		BFCF10201E4B3A2E005555F9 /* Yamaha RX-Controller for MAC */ = {
 			isa = PBXGroup;
 			children = (
+				BFDB9FC21E4B4FF100781EA2 /* Yamaha RX-Controller for MAC.entitlements */,
 				BFCF10211E4B3A2E005555F9 /* AppDelegate.h */,
 				BFCF10221E4B3A2E005555F9 /* AppDelegate.m */,
-				BFCF10271E4B3A2E005555F9 /* ViewController.h */,
-				BFCF10281E4B3A2E005555F9 /* ViewController.m */,
+				BFCF10351E4B3E4C005555F9 /* CommunicationController.h */,
+				BFCF10361E4B3E4C005555F9 /* CommunicationController.m */,
+				BFDB9FC81E4B646100781EA2 /* StatusBarMenu.h */,
+				BFDB9FC91E4B646100781EA2 /* StatusBarMenu.m */,
 				BFCF102A1E4B3A2E005555F9 /* Assets.xcassets */,
 				BFCF102C1E4B3A2E005555F9 /* Main.storyboard */,
 				BFCF102F1E4B3A2E005555F9 /* Info.plist */,
+				BFE6E0361E4B7AC000090B12 /* XMLReader.h */,
+				BFE6E0371E4B7AC000090B12 /* XMLReader.m */,
+				BFCF10271E4B3A2E005555F9 /* ViewController.h */,
+				BFCF10281E4B3A2E005555F9 /* ViewController.m */,
 				BFCF10241E4B3A2E005555F9 /* Supporting Files */,
 			);
 			path = "Yamaha RX-Controller for MAC";
@@ -107,7 +124,13 @@
 				TargetAttributes = {
 					BFCF101D1E4B3A2D005555F9 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = N2F7XG7N58;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -146,8 +169,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFDB9FCA1E4B646100781EA2 /* StatusBarMenu.m in Sources */,
 				BFCF10291E4B3A2E005555F9 /* ViewController.m in Sources */,
 				BFCF10261E4B3A2E005555F9 /* main.m in Sources */,
+				BFCF10371E4B3E4C005555F9 /* CommunicationController.m in Sources */,
+				BFE6E0381E4B7AC000090B12 /* XMLReader.m in Sources */,
 				BFCF10231E4B3A2E005555F9 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,7 +283,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Yamaha RX-Controller for MAC/Yamaha RX-Controller for MAC.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = N2F7XG7N58;
 				INFOPLIST_FILE = "Yamaha RX-Controller for MAC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "hiimzvaehn.de.Yamaha-RX-Controller-for-MAC";
@@ -269,7 +298,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Yamaha RX-Controller for MAC/Yamaha RX-Controller for MAC.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = N2F7XG7N58;
 				INFOPLIST_FILE = "Yamaha RX-Controller for MAC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "hiimzvaehn.de.Yamaha-RX-Controller-for-MAC";
@@ -296,6 +328,7 @@
 				BFCF10341E4B3A2E005555F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
