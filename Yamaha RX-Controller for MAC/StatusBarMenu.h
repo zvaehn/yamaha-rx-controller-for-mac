@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface StatusBarMenu : NSMenu <NSMenuDelegate>
+@interface StatusBarMenu : NSMenu
 
 @end

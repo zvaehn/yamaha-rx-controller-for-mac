@@ -10,16 +10,12 @@
 
 @implementation StatusBarMenu
 
-- (void)menuWillOpen:(StatusBarMenu *)menu {
-    NSLog(@"menu opened");
+- (void)menuWillOpen:(NSMenu *)menu {
+    NSLog(@"open");
 }
 
 - (void)menuDidClose:(NSMenu *)menu {
-    NSLog(@"menu closed");
-}
-
-- (void)viewDidLoad{
-    NSLog(@"menu asdasdasda");
+    NSLog(@"close");
 }
 
 @end

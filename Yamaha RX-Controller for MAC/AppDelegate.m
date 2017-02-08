@@ -67,7 +67,9 @@
 }
 
 - (IBAction)volumeSliderHasChanged:(id)sender {
-    NSLog(@"%d", [sender intValue]);
+    int dbValue = 70 - [sender intValue];
+    
+    [self.cmdcstrl sendCommand: [NSString stringWithFormat: @"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Volume><Lvl><Val>-%d0</Val><Exp>1</Exp><Unit>dB</Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>", dbValue]];
 }
 
 - (IBAction)onPreferencesPressed:(id)sender {

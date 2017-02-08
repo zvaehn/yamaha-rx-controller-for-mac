@@ -13,7 +13,7 @@
 		BFCF102B1E4B3A2E005555F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCF102A1E4B3A2E005555F9 /* Assets.xcassets */; };
 		BFCF102E1E4B3A2E005555F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCF102C1E4B3A2E005555F9 /* Main.storyboard */; };
 		BFCF10371E4B3E4C005555F9 /* CommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10361E4B3E4C005555F9 /* CommunicationController.m */; };
-		BFDB9FCA1E4B646100781EA2 /* StatusBarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDB9FC91E4B646100781EA2 /* StatusBarMenu.m */; };
+		BFE2F2AD1E4B9DEF001F7437 /* StatusBarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2F2AC1E4B9DEF001F7437 /* StatusBarMenu.m */; };
 		BFE6E0381E4B7AC000090B12 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE6E0371E4B7AC000090B12 /* XMLReader.m */; };
 /* End PBXBuildFile section */
 
@@ -30,8 +30,8 @@
 		BFCF10351E4B3E4C005555F9 /* CommunicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationController.h; sourceTree = "<group>"; };
 		BFCF10361E4B3E4C005555F9 /* CommunicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationController.m; sourceTree = "<group>"; };
 		BFDB9FC21E4B4FF100781EA2 /* Yamaha RX-Controller for MAC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Yamaha RX-Controller for MAC.entitlements"; sourceTree = "<group>"; };
-		BFDB9FC81E4B646100781EA2 /* StatusBarMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusBarMenu.h; path = ../StatusBarMenu.h; sourceTree = "<group>"; };
-		BFDB9FC91E4B646100781EA2 /* StatusBarMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBarMenu.m; path = ../StatusBarMenu.m; sourceTree = "<group>"; };
+		BFE2F2AB1E4B9DEF001F7437 /* StatusBarMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarMenu.h; sourceTree = "<group>"; };
+		BFE2F2AC1E4B9DEF001F7437 /* StatusBarMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarMenu.m; sourceTree = "<group>"; };
 		BFE6E0361E4B7AC000090B12 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		BFE6E0371E4B7AC000090B12 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,8 +71,8 @@
 				BFCF10221E4B3A2E005555F9 /* AppDelegate.m */,
 				BFCF10351E4B3E4C005555F9 /* CommunicationController.h */,
 				BFCF10361E4B3E4C005555F9 /* CommunicationController.m */,
-				BFDB9FC81E4B646100781EA2 /* StatusBarMenu.h */,
-				BFDB9FC91E4B646100781EA2 /* StatusBarMenu.m */,
+				BFE2F2AB1E4B9DEF001F7437 /* StatusBarMenu.h */,
+				BFE2F2AC1E4B9DEF001F7437 /* StatusBarMenu.m */,
 				BFCF102A1E4B3A2E005555F9 /* Assets.xcassets */,
 				BFCF102C1E4B3A2E005555F9 /* Main.storyboard */,
 				BFCF102F1E4B3A2E005555F9 /* Info.plist */,
@@ -169,7 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFDB9FCA1E4B646100781EA2 /* StatusBarMenu.m in Sources */,
+				BFE2F2AD1E4B9DEF001F7437 /* StatusBarMenu.m in Sources */,
 				BFCF10291E4B3A2E005555F9 /* ViewController.m in Sources */,
 				BFCF10261E4B3A2E005555F9 /* main.m in Sources */,
 				BFCF10371E4B3E4C005555F9 /* CommunicationController.m in Sources */,

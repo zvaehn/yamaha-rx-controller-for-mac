@@ -689,6 +689,7 @@
                                 <action selector="onVolumeDownPressed:" target="Voe-Tx-rLC" id="Hyz-NP-BGN"/>
                             </connections>
                         </menuItem>
+                        <menuItem isSeparatorItem="YES" id="sh8-Kr-KG2"/>
                         <menuItem title="Device" id="sJJ-2H-GCY">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Device" id="SfH-Kn-Oug">
@@ -733,7 +734,7 @@
                         <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bmU-ZM-gFg">
                             <rect key="frame" x="18" y="8" width="164" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <sliderCell key="cell" state="on" alignment="left" minValue="50" maxValue="70" doubleValue="55" tickMarkPosition="below" sliderType="linear" id="Gjs-Lq-gG3"/>
+                            <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="10" tickMarkPosition="below" sliderType="linear" id="Gjs-Lq-gG3"/>
                             <connections>
                                 <action selector="volumeSliderHasChanged:" target="Voe-Tx-rLC" id="TAm-Ov-tcG"/>
                             </connections>
