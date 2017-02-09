@@ -10,7 +10,7 @@
 #import "CommunicationController.h"
 #import "StatusBarMenu.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate>
 
 // Status Bar
 @property CommunicationController *cmdcstrl;

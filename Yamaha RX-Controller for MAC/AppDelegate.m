@@ -16,13 +16,11 @@
 
 @implementation AppDelegate
 
-- (void)menuWillOpen:(StatusBarMenu *)menu {
-    NSLog(@"menu opened");
-}
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    //  Assign the Menu to the status bar item
     self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    
+    self.statusBar.highlightMode = YES;
+    self.statusMenu.delegate = self.statusMenu;
     [self.statusBar setMenu:self.statusMenu];
     
     // set menu icon
@@ -30,12 +28,9 @@
     statusImage.size = NSMakeSize(16.0, 16.0);
     self.statusBar.image = statusImage;
     
+    
     // Assign custom view to menu item
     [self.volumeSliderItem setView:self.volumeSliderView];
-
-    //  Assign the Menu to the status bar item
-    self.statusBar.menu = self.statusMenu;
-    self.statusBar.highlightMode = YES;
 
     self.cmdcstrl = [[CommunicationController alloc] init];
     

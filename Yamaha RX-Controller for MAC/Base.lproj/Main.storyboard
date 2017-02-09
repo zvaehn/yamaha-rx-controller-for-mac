@@ -726,6 +726,10 @@
                             </connections>
                         </menuItem>
                     </items>
+                    <connections>
+                        <outlet property="volumeSlider" destination="bmU-ZM-gFg" id="Oqr-fu-P6R"/>
+                        <outlet property="volumeSliderView" destination="4se-V0-ZxZ" id="c91-Yz-6O1"/>
+                    </connections>
                 </menu>
                 <customView id="4se-V0-ZxZ">
                     <rect key="frame" x="0.0" y="0.0" width="200" height="35"/>

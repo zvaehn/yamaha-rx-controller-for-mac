@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface StatusBarMenu : NSMenu
+@interface StatusBarMenu : NSMenu <NSMenuDelegate>
+
+@property (weak) IBOutlet NSView *volumeSliderView;
+@property (weak) IBOutlet NSSlider *volumeSlider;
 
 @end
