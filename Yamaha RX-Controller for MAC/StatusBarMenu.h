@@ -7,10 +7,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CommunicationController.h"
 
 @interface StatusBarMenu : NSMenu <NSMenuDelegate>
 
+@property CommunicationController *cmdcstrl;
 @property (weak) IBOutlet NSView *volumeSliderView;
 @property (weak) IBOutlet NSSlider *volumeSlider;
+
+- (IBAction)onToggleMuteClicked:(id)sender;
+- (IBAction)onPreferencesClicked:(id)sender;
+- (IBAction)onQuitPressed:(id)sender;
+- (IBAction)onVolumeHasChanged:(id)sender;
+
 
 @end

@@ -25,6 +25,7 @@
 
 
 -(BOOL) sendCommand:(NSString*)identifiedByString {
+    NSLog(@"send cmd");
     NSString *url = [self.ip stringByAppendingString: @"/YamahaRemoteControl/ctrl"];
     NSString *post = identifiedByString;
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding];
@@ -83,7 +84,7 @@
     NSString *xml = [[NSString alloc] initWithBytes: [self.response mutableBytes] length:[self.response length] encoding:NSUTF8StringEncoding];
     NSLog(@"RESPONSE: %@", xml);
     
-
+    
     
 }
 

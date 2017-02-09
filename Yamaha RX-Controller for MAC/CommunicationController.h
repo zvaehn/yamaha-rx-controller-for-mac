@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XMLReader.h";
+#import "XMLReader.h"//;
 
 @interface CommunicationController : NSObject
 

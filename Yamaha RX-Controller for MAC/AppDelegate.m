@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "CommunicationController.h"
 #import "StatusBarMenu.h"
 
 @interface AppDelegate ()
@@ -32,7 +31,7 @@
     // Assign custom view to menu item
     [self.volumeSliderItem setView:self.volumeSliderView];
 
-    self.cmdcstrl = [[CommunicationController alloc] init];
+    //self.cmdcstrl = [[CommunicationController alloc] init];
     
     /*[self.cmdcstrl sendCommand:
      @"<YAMAHA_AV cmd=\"GET\"><System><Config>GetParam</Config></System></YAMAHA_AV>"];*/
@@ -41,39 +40,22 @@
      @"<YAMAHA_AV cmd=\"GET\"><Main_Zone><Basic_Status>GetParam</Basic_Status></Main_Zone></YAMAHA_AV>"];*/
 }
 
-- (IBAction)onToggleMutePressed:(id)sender {
-    [self.cmdcstrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Volume><Mute>On/Off</Mute></Volume></Main_Zone></YAMAHA_AV>"];
-}
-
-- (IBAction)onVolumeUpPressed:(id)sender {
+/*- (IBAction)onVolumeUpPressed:(id)sender {
     [self.cmdcstrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Volume><Lvl><Val>Up 2 dB</Val><Exp></Exp><Unit></Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>"];
 }
 
 - (IBAction)onVolumeDownPressed:(id)sender {
     [self.cmdcstrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Volume><Lvl><Val>Down 2 dB</Val><Exp></Exp><Unit></Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>"];
-}
+}*/
 
 - (IBAction)onDevicePowerOnPressed:(id)sender {
-     [self.cmdcstrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><System><Power_Control><Power>On</Power></Power_Control></System></YAMAHA_AV>"];
+//     [self.cmdcstrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><System><Power_Control><Power>On</Power></Power_Control></System></YAMAHA_AV>"];
 }
 
 - (IBAction)onDevicePowerOffPressed:(id)sender {
-    [self.cmdcstrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><System><Power_Control><Power>Standby</Power></Power_Control></System></YAMAHA_AV>"];
+//    [self.cmdcstrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><System><Power_Control><Power>Standby</Power></Power_Control></System></YAMAHA_AV>"];
 }
 
-- (IBAction)volumeSliderHasChanged:(id)sender {
-    int dbValue = 70 - [sender intValue];
-    
-    [self.cmdcstrl sendCommand: [NSString stringWithFormat: @"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Volume><Lvl><Val>-%d0</Val><Exp>1</Exp><Unit>dB</Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>", dbValue]];
-}
-
-- (IBAction)onPreferencesPressed:(id)sender {
-     [self.cmdcstrl sendCommand:@"<YAMAHA_AV cmd=\"GET\"><Main_Zone><Config></Config></Main_Zone></YAMAHA_AV>"];
-}
-
-- (IBAction)onQuitPressed:(id)sender {
-    [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
-}
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

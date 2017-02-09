@@ -674,19 +674,7 @@
                         <menuItem title="Toggle Mute" id="C8B-eJ-zmL">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="onToggleMutePressed:" target="Voe-Tx-rLC" id="Qk6-5F-quA"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Up (+)" hidden="YES" enabled="NO" id="t8C-aT-sI3">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="onVolumeUpPressed:" target="Voe-Tx-rLC" id="7pY-gN-Lc0"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Down (-)" hidden="YES" enabled="NO" id="Wv6-v3-697">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="onVolumeDownPressed:" target="Voe-Tx-rLC" id="Hyz-NP-BGN"/>
+                                <action selector="onToggleMuteClicked:" target="LDw-nl-MKC" id="2I4-Hf-4zJ"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="sh8-Kr-KG2"/>
@@ -716,20 +704,16 @@
                         <menuItem title="Preferences" id="EMi-Cy-PAk">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="onPreferencesPressed:" target="Voe-Tx-rLC" id="C0L-KZ-aIZ"/>
+                                <action selector="onPreferencesClicked:" target="LDw-nl-MKC" id="21r-cd-fOu"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Quit" id="tec-Gk-0kZ">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="onQuitPressed:" target="Voe-Tx-rLC" id="5M7-tx-EGa"/>
+                                <action selector="onQuitPressed:" target="LDw-nl-MKC" id="gtX-Jn-qxv"/>
                             </connections>
                         </menuItem>
                     </items>
-                    <connections>
-                        <outlet property="volumeSlider" destination="bmU-ZM-gFg" id="Oqr-fu-P6R"/>
-                        <outlet property="volumeSliderView" destination="4se-V0-ZxZ" id="c91-Yz-6O1"/>
-                    </connections>
                 </menu>
                 <customView id="4se-V0-ZxZ">
                     <rect key="frame" x="0.0" y="0.0" width="200" height="35"/>
@@ -740,7 +724,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="10" tickMarkPosition="below" sliderType="linear" id="Gjs-Lq-gG3"/>
                             <connections>
-                                <action selector="volumeSliderHasChanged:" target="Voe-Tx-rLC" id="TAm-Ov-tcG"/>
+                                <action selector="onVolumeHasChanged:" target="LDw-nl-MKC" id="A4F-8H-tIs"/>
                             </connections>
                         </slider>
                     </subviews>
