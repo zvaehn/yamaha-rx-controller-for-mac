@@ -665,7 +665,11 @@
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="LDw-nl-MKC" customClass="StatusBarMenu">
                     <items>
-                        <menuItem title="Volume:" enabled="NO" id="lZ7-tL-iPp">
+                        <menuItem title="Connected: RX-745" enabled="NO" id="lZ7-tL-iPp">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="LKb-9L-PWP"/>
+                        <menuItem title="Volume:" enabled="NO" id="3mX-J8-Ert">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem title="--Volume Slider--" id="BCv-fW-jWt">
@@ -716,11 +720,11 @@
                     </items>
                 </menu>
                 <customView id="4se-V0-ZxZ">
-                    <rect key="frame" x="0.0" y="0.0" width="200" height="35"/>
+                    <rect key="frame" x="0.0" y="0.0" width="243" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bmU-ZM-gFg">
-                            <rect key="frame" x="18" y="8" width="164" height="19"/>
+                            <rect key="frame" x="18" y="8" width="207" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="10" tickMarkPosition="below" sliderType="linear" id="Gjs-Lq-gG3"/>
                             <connections>

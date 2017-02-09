@@ -16,8 +16,6 @@
 @property (weak) IBOutlet NSMenuItem *volumeSliderItem;
 @property (weak) IBOutlet NSView *volumeSliderView;
 
-- (IBAction)onVolumeUpPressed:(id)sender;
-- (IBAction)onVolumeDownPressed:(id)sender;
 - (IBAction)onDevicePowerOnPressed:(id)sender;
 - (IBAction)onDevicePowerOffPressed:(id)sender;
 

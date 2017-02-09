@@ -7,13 +7,15 @@
 //
 
 #import "CommunicationController.h"
+#import "AFHTTPSessionManager.h"
+#import "StatusBarMenu.h"
 
 @implementation CommunicationController
 
--(id) init
-{
+-(id) init {
     if(self = [super init]) {
-       self.ip = @"http://192.168.178.26";
+        self.ip = @"http://192.168.178.26";
+        //self.statusMenu = [[StatusBarMenu alloc] init];
     }
     
     return self;
@@ -23,9 +25,40 @@
     return true;
 }
 
+-(void) getBasicStatus {
+    NSString *xml = @"<YAMAHA_AV cmd=\"GET\"><Main_Zone><Basic_Status>GetParam</Basic_Status></Main_Zone></YAMAHA_AV>";
+    
+    NSMutableURLRequest *urlrequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://192.168.178.26/YamahaRemoteControl/ctrl" parameters:nil error:nil];
+    [urlrequest setHTTPBody:[NSKeyedArchiver archivedDataWithRootObject:xml]];
+    
+    AFHTTPSessionManager *smanager = [[AFHTTPSessionManager alloc] init];
+    smanager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    smanager.responseSerializer.acceptableContentTypes =  [smanager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/xml"];
 
+    NSURLSessionDataTask *task = [smanager dataTaskWithRequest:urlrequest completionHandler:^(NSURLResponse* _Nonnull response, id  _Nullable responseObject, NSError* _Nullable error) {
+        if(!error) {
+            NSError *parseerror = nil;
+            NSString *fetchedXML = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
+            
+            NSData *data = [fetchedXML dataUsingEncoding:NSUTF8StringEncoding];
+            
+            NSDictionary *dict = [XMLReader dictionaryForXMLData:data
+                                                     options:XMLReaderOptionsProcessNamespaces
+                                                       error:&parseerror];
+            
+//            [self.statusMenu menuWillOpenCompletionHandler:dict];
+        }
+        else {
+            NSLog(@"Error: %@", error);
+//            [self.statusMenu menuWillOpenCompletionHandler:nil];
+        }
+    }];
+    
+    [task resume];
+}
+
+// Send a command to the yamaha reciever as raw xml-string
 -(BOOL) sendCommand:(NSString*)identifiedByString {
-    NSLog(@"send cmd");
     NSString *url = [self.ip stringByAppendingString: @"/YamahaRemoteControl/ctrl"];
     NSString *post = identifiedByString;
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding];
@@ -62,28 +95,33 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [self.response appendData:data];
-    NSLog(@"connection received data");
+    //NSLog(@"connection received data");
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSHTTPURLResponse *ne = (NSHTTPURLResponse *)response;
     if([ne statusCode] == 200) {
         self.isConnected = YES;
-        NSLog(@"connection state is 200 - all okay");
+        //NSLog(@"connection state is 200 - all okay");
     } else {
-        NSLog(@"connection state is %ld", (long)[ne statusCode]);
+        NSLog(@"Connection HTTP: %ld", (long)[ne statusCode]);
     }
 }
 
 -(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     self.isConnected = NO;
-    NSLog(@"Conn Err: %@", [error localizedDescription]);
+    NSLog(@"Connection Error: %@", [error localizedDescription]);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSString *xml = [[NSString alloc] initWithBytes: [self.response mutableBytes] length:[self.response length] encoding:NSUTF8StringEncoding];
-    NSLog(@"RESPONSE: %@", xml);
+    NSLog(@"Response: %@", xml);
     
+    NSData *data = [NSData dataWithBytes:[self.response mutableBytes] length:[self.response length]];
+    NSError *error = nil;
+    NSDictionary *dict = [XMLReader dictionaryForXMLData:data
+                                                 options:XMLReaderOptionsProcessNamespaces
+                                                   error:&error];
     
     
 }

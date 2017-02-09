@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27615791B7C0EB1408E99912 /* libPods-Yamaha RX-Controller for MAC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9F6560C9E0FD11906008 /* libPods-Yamaha RX-Controller for MAC.a */; };
 		BFCF10231E4B3A2E005555F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10221E4B3A2E005555F9 /* AppDelegate.m */; };
 		BFCF10261E4B3A2E005555F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10251E4B3A2E005555F9 /* main.m */; };
 		BFCF10291E4B3A2E005555F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10281E4B3A2E005555F9 /* ViewController.m */; };
@@ -15,9 +16,12 @@
 		BFCF10371E4B3E4C005555F9 /* CommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10361E4B3E4C005555F9 /* CommunicationController.m */; };
 		BFE2F2AD1E4B9DEF001F7437 /* StatusBarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2F2AC1E4B9DEF001F7437 /* StatusBarMenu.m */; };
 		BFE6E0381E4B7AC000090B12 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE6E0371E4B7AC000090B12 /* XMLReader.m */; };
+		BFFB1E691E4C75AB009EADC9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BFFB1E681E4C75AB009EADC9 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		218E9F6560C9E0FD11906008 /* libPods-Yamaha RX-Controller for MAC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yamaha RX-Controller for MAC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACFD4836EAAC549105506562 /* Pods-Yamaha RX-Controller for MAC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yamaha RX-Controller for MAC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yamaha RX-Controller for MAC/Pods-Yamaha RX-Controller for MAC.debug.xcconfig"; sourceTree = "<group>"; };
 		BFCF101E1E4B3A2E005555F9 /* Yamaha RX-Controller for MAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yamaha RX-Controller for MAC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCF10211E4B3A2E005555F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BFCF10221E4B3A2E005555F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -34,6 +38,8 @@
 		BFE2F2AC1E4B9DEF001F7437 /* StatusBarMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarMenu.m; sourceTree = "<group>"; };
 		BFE6E0361E4B7AC000090B12 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		BFE6E0371E4B7AC000090B12 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		BFFB1E681E4C75AB009EADC9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		DBE17B88F96579F31D92B07D /* Pods-Yamaha RX-Controller for MAC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yamaha RX-Controller for MAC.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yamaha RX-Controller for MAC/Pods-Yamaha RX-Controller for MAC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +47,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27615791B7C0EB1408E99912 /* libPods-Yamaha RX-Controller for MAC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DDF69E169DA5FBC86A60709 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				218E9F6560C9E0FD11906008 /* libPods-Yamaha RX-Controller for MAC.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		24A787295A1DDBF2EE72E9C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ACFD4836EAAC549105506562 /* Pods-Yamaha RX-Controller for MAC.debug.xcconfig */,
+				DBE17B88F96579F31D92B07D /* Pods-Yamaha RX-Controller for MAC.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BFCF10151E4B3A2D005555F9 = {
 			isa = PBXGroup;
 			children = (
+				BFFB1E681E4C75AB009EADC9 /* Podfile */,
 				BFCF10201E4B3A2E005555F9 /* Yamaha RX-Controller for MAC */,
 				BFCF101F1E4B3A2E005555F9 /* Products */,
+				24A787295A1DDBF2EE72E9C3 /* Pods */,
+				1DDF69E169DA5FBC86A60709 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,9 +127,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFCF10321E4B3A2E005555F9 /* Build configuration list for PBXNativeTarget "Yamaha RX-Controller for MAC" */;
 			buildPhases = (
+				B743521A550169CF189A6A6D /* [CP] Check Pods Manifest.lock */,
 				BFCF101A1E4B3A2D005555F9 /* Sources */,
 				BFCF101B1E4B3A2D005555F9 /* Frameworks */,
 				BFCF101C1E4B3A2D005555F9 /* Resources */,
+				9F278A863A82120B6FF0C0A0 /* [CP] Embed Pods Frameworks */,
+				855755FA522518B47E17C8AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -159,10 +189,59 @@
 			files = (
 				BFCF102B1E4B3A2E005555F9 /* Assets.xcassets in Resources */,
 				BFCF102E1E4B3A2E005555F9 /* Main.storyboard in Resources */,
+				BFFB1E691E4C75AB009EADC9 /* Podfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		855755FA522518B47E17C8AE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Yamaha RX-Controller for MAC/Pods-Yamaha RX-Controller for MAC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F278A863A82120B6FF0C0A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Yamaha RX-Controller for MAC/Pods-Yamaha RX-Controller for MAC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B743521A550169CF189A6A6D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BFCF101A1E4B3A2D005555F9 /* Sources */ = {
@@ -281,6 +360,7 @@
 		};
 		BFCF10331E4B3A2E005555F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACFD4836EAAC549105506562 /* Pods-Yamaha RX-Controller for MAC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Yamaha RX-Controller for MAC/Yamaha RX-Controller for MAC.entitlements";
@@ -296,6 +376,7 @@
 		};
 		BFCF10341E4B3A2E005555F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBE17B88F96579F31D92B07D /* Pods-Yamaha RX-Controller for MAC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Yamaha RX-Controller for MAC/Yamaha RX-Controller for MAC.entitlements";
