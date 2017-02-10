@@ -672,13 +672,13 @@
                         <menuItem title="Volume:" enabled="NO" id="3mX-J8-Ert">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
-                        <menuItem title="--Volume Slider--" id="BCv-fW-jWt">
+                        <menuItem title="----[]------------" enabled="NO" id="BCv-fW-jWt">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem title="Mute Audio" enabled="NO" id="C8B-eJ-zmL">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="onToggleMuteClicked:" target="LDw-nl-MKC" id="2I4-Hf-4zJ"/>
+                                <action selector="onToggleMuteClicked:" target="LDw-nl-MKC" id="GJO-qJ-EfQ"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="sh8-Kr-KG2"/>
@@ -720,8 +720,9 @@
                         </menuItem>
                     </items>
                     <connections>
+                        <outlet property="deviceMenuItem" destination="sJJ-2H-GCY" id="oY4-Ph-7qI"/>
                         <outlet property="statusMenuItem" destination="lZ7-tL-iPp" id="PF8-eG-BCT"/>
-                        <outlet property="toggleMuteMenuItem" destination="C8B-eJ-zmL" id="IKe-oZ-tLQ"/>
+                        <outlet property="toggleMuteMenuItem" destination="C8B-eJ-zmL" id="YND-8z-bYM"/>
                         <outlet property="volumeSlider" destination="bmU-ZM-gFg" id="6e0-gy-uHl"/>
                     </connections>
                 </menu>

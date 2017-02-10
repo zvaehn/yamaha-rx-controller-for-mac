@@ -14,15 +14,28 @@
 
 - (void)awakeFromNib {
     self.comctrl = [[CommunicationController alloc] init];
+    self.isConnected = NO;
 }
+
+// ToDo: markMenuAsDisconnected;
+
+// ToDo: markMenuAsConnected;
 
 
 - (void)menuDidClose:(NSMenu *)menu {
-    [self.volumeSlider setEnabled:NO];
-    [self.toggleMuteMenuItem setEnabled:NO];
+    
 }
 
 - (void)menuWillOpen:(NSMenu *)menu {
+    [self.statusMenuItem setTitle:@"Connecting..."];
+    [self.statusMenuItem setEnabled:NO];
+    [self.volumeSlider setEnabled:NO];
+    [self.toggleMuteMenuItem setEnabled:NO];
+    [self.volumeSlider setEnabled:NO];
+    [self.toggleMuteMenuItem setEnabled:NO];
+    [self setMenuItemToBold:NO forMenuItem:self.deviceMenuItem];
+    
+    // Finally get volume information
     [self getVolumeInformation];
 }
 
@@ -30,11 +43,7 @@
 -(void)getVolumeInformation {
     NSString *xml = @"<YAMAHA_AV cmd=\"GET\"><Main_Zone><Basic_Status>GetParam</Basic_Status></Main_Zone></YAMAHA_AV>";
     
-    [self.statusMenuItem setTitle:@"Connecting..."];
-    [self.statusMenuItem setEnabled:NO];
-    [self.volumeSlider setEnabled:NO];
-    [self.toggleMuteMenuItem setEnabled:NO];
-    
+    // Start the request
     NSMutableURLRequest *urlrequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://192.168.178.26/YamahaRemoteControl/ctrl" parameters:nil error:nil];
     [urlrequest setTimeoutInterval:5];
     [urlrequest setHTTPBody:[NSKeyedArchiver archivedDataWithRootObject:xml]];
@@ -57,27 +66,23 @@
             
             NSDictionary *volume = [dict valueForKeyPath:@"YAMAHA_AV.Main_Zone.Basic_Status.Volume"];
             
+            // Show menuitems as usable
+            [self setMenuItemToBold:YES forMenuItem:self.deviceMenuItem];
             [self.volumeSlider setEnabled:YES];
             [self.toggleMuteMenuItem setEnabled:YES];
-            
-            // Set statuslabel
             [self.statusMenuItem setTitle:@"Status: Connected"];
             
             // Get Volume
             NSString *rawVolLevel = [volume valueForKeyPath:@"Lvl.Val.text"];
             NSNumber *volLevel = [NSNumber numberWithInt: [rawVolLevel intValue]];
             
-            // Get Mute status
-            NSString *mute = [volume valueForKeyPath:@"Mute.text"];
-            BOOL isMuted = ([mute isEqualToString:@"On"] ? YES : NO);
-            
-            // Logic slider volume
+            // Set slider Volume
             [self.volumeSlider setDoubleValue:[volLevel doubleValue]];
             
-//            NSLog(@"Set Slider (based on revieved) to: %f", [volLevel doubleValue]);
+            // Set Mute status
+            NSString *mute = [volume valueForKeyPath:@"Mute.text"];
             
-            // Logic Mute status
-            if(isMuted) {
+            if([mute isEqualToString:@"On"]) {
                 [self.toggleMuteMenuItem setState:1];
             }
             else {
@@ -92,10 +97,6 @@
     
     [task resume];
 }
-
-/*- (void)menuWillOpenCompletionHandler:(NSDictionary *)dict {
-    
-}*/
 
 - (IBAction)onVolumeHasChanged:(id)sender {
     double rawSiderValue = [sender doubleValue];
@@ -134,6 +135,22 @@
 
 - (IBAction)onDevicePowerOnClicked:(id)sender {
     [self.comctrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Power_Control><Power>On</Power></Power_Control></Main_Zone></YAMAHA_AV>"];
+}
+
+
+- (void)setMenuItemToBold:(bool)bold forMenuItem:(NSMenuItem *)menuItem {
+    NSFont *pFont;
+    
+    if(bold) {
+        pFont = [NSFont boldSystemFontOfSize:14];
+    }
+    else {
+        pFont = [NSFont menuFontOfSize:14];
+    }
+    
+    NSDictionary* fontAttribute = [NSDictionary dictionaryWithObjectsAndKeys: pFont, NSFontAttributeName, nil] ;
+    NSMutableAttributedString* newTitle = [[NSMutableAttributedString alloc] initWithString:[menuItem title] attributes:fontAttribute];
+    [menuItem setAttributedTitle:newTitle];
 }
 
 @end

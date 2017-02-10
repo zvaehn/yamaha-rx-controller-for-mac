@@ -13,17 +13,18 @@
 @interface StatusBarMenu : NSMenu <NSMenuDelegate>
 
 @property CommunicationController *comctrl;
+@property BOOL isConnected;
 
 @property (weak) IBOutlet NSView *volumeSliderView;
 @property (weak) IBOutlet NSMenuItem *statusMenuItem;
+@property (weak) IBOutlet NSSlider *volumeSlider;
 @property (weak) IBOutlet NSMenuItem *toggleMuteMenuItem;
-@property (strong) IBOutlet NSSlider *volumeSlider;
+@property (weak) IBOutlet NSMenuItem *deviceMenuItem;
 
+- (IBAction)onVolumeHasChanged:(id)sender;
 - (IBAction)onToggleMuteClicked:(id)sender;
 - (IBAction)onPreferencesClicked:(id)sender;
 - (IBAction)onQuitPressed:(id)sender;
-- (IBAction)onVolumeHasChanged:(id)sender;
-//- (void) menuWillOpenCompletionHandler:(NSDictionary *)dict;
 - (IBAction)onDevicePowerOnClicked:(id)sender;
 - (IBAction)onDevicePowerOffClicked:(id)sender;
 
