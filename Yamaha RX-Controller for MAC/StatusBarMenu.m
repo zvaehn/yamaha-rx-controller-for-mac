@@ -16,6 +16,12 @@
     self.comctrl = [[CommunicationController alloc] init];
 }
 
+
+- (void)menuDidClose:(NSMenu *)menu {
+    [self.volumeSlider setEnabled:NO];
+    [self.toggleMuteMenuItem setEnabled:NO];
+}
+
 - (void)menuWillOpen:(NSMenu *)menu {
     [self getVolumeInformation];
 }
@@ -54,6 +60,9 @@
             [self.volumeSlider setEnabled:YES];
             [self.toggleMuteMenuItem setEnabled:YES];
             
+            // Set statuslabel
+            [self.statusMenuItem setTitle:@"Status: Connected"];
+            
             // Get Volume
             NSString *rawVolLevel = [volume valueForKeyPath:@"Lvl.Val.text"];
             NSNumber *volLevel = [NSNumber numberWithInt: [rawVolLevel intValue]];
@@ -87,11 +96,6 @@
 /*- (void)menuWillOpenCompletionHandler:(NSDictionary *)dict {
     
 }*/
-
-- (void)menuDidClose:(NSMenu *)menu {
-    
-}
-
 
 - (IBAction)onVolumeHasChanged:(id)sender {
     int dbValue = [sender intValue];
