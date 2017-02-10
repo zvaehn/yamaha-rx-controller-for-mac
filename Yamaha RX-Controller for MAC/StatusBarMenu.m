@@ -98,11 +98,15 @@
 }*/
 
 - (IBAction)onVolumeHasChanged:(id)sender {
-    int dbValue = [sender intValue];
-    
-    NSLog(@"Push reciever volume to: %d", dbValue);
+    double rawSiderValue = [sender doubleValue];
+    double sliderValue = rawSiderValue/10;
+    double roundedSliderValue = round(sliderValue * 2.0) / 2.0; // round to 0, 0.5, 1 ...
+    int dbValue = (roundedSliderValue * 10);
     
     [self.comctrl sendCommand: [NSString stringWithFormat: @"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Volume><Lvl><Val>%d</Val><Exp>1</Exp><Unit>dB</Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>", dbValue]];
+    
+    // Force the menu to close itself. This is necessary due to sendCommand limitations :/
+    [self cancelTracking];
 }
 
 - (IBAction)onToggleMuteClicked:(id)sender {

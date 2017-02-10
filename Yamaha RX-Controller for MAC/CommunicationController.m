@@ -110,13 +110,23 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSString *xml = [[NSString alloc] initWithBytes: [self.response mutableBytes] length:[self.response length] encoding:NSUTF8StringEncoding];
-    NSLog(@"Response: %@", xml);
     
     NSData *data = [NSData dataWithBytes:[self.response mutableBytes] length:[self.response length]];
     NSError *error = nil;
     NSDictionary *dict = [XMLReader dictionaryForXMLData:data
                                                  options:XMLReaderOptionsProcessNamespaces
-                                                   error:&error]; 
+                                                   error:&error];
+    
+    if(dict) {
+        //NSLog(@"%@", (int)[dict valueForKeyPath:@"YAMAHA_AV.RC"]);
+        
+        if([[dict valueForKeyPath:@"YAMAHA_AV.RC"] intValue] == 0) {
+            NSLog(@"Response RC-Code: 0");
+        }
+        else {
+            NSLog(@"Response: %@", xml);
+        }
+    }
 }
 
 

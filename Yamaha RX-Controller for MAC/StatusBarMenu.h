@@ -13,6 +13,7 @@
 @interface StatusBarMenu : NSMenu <NSMenuDelegate>
 
 @property CommunicationController *comctrl;
+
 @property (weak) IBOutlet NSView *volumeSliderView;
 @property (weak) IBOutlet NSMenuItem *statusMenuItem;
 @property (weak) IBOutlet NSMenuItem *toggleMuteMenuItem;
