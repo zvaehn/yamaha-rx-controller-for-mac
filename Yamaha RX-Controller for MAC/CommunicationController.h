@@ -8,14 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "XMLReader.h"
-//#import "StatusBarMenu.h"
 
 @interface CommunicationController : NSURLSession
 
 @property BOOL isConnected;
 @property NSString *ip;
 @property NSMutableData *response;
-//@property StatusBarMenu *statusMenu;
 @property XMLReader *xmlReader;
 
 

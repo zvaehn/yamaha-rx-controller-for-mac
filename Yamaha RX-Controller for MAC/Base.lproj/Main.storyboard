@@ -665,7 +665,7 @@
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="LDw-nl-MKC" customClass="StatusBarMenu">
                     <items>
-                        <menuItem title="Connected: RX-745" enabled="NO" id="lZ7-tL-iPp">
+                        <menuItem title="Connecting..." enabled="NO" id="lZ7-tL-iPp">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="LKb-9L-PWP"/>
@@ -675,7 +675,7 @@
                         <menuItem title="--Volume Slider--" id="BCv-fW-jWt">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
-                        <menuItem title="Toggle Mute" id="C8B-eJ-zmL">
+                        <menuItem title="Mute Audio" enabled="NO" id="C8B-eJ-zmL">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="onToggleMuteClicked:" target="LDw-nl-MKC" id="2I4-Hf-4zJ"/>
@@ -689,23 +689,24 @@
                                     <menuItem title="Devicename" enabled="NO" id="2xJ-xr-6Ww">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
+                                    <menuItem isSeparatorItem="YES" id="x3D-ZM-hI7"/>
                                     <menuItem title="Power On" id="5zk-cJ-t97">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="onDevicePowerOnPressed:" target="Voe-Tx-rLC" id="3SS-Kj-tkU"/>
+                                            <action selector="onDevicePowerOnClicked:" target="LDw-nl-MKC" id="KpZ-gL-KkL"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Power Off" id="AXI-h2-x71">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="onDevicePowerOffPressed:" target="Voe-Tx-rLC" id="oxR-Ns-qBI"/>
+                                            <action selector="onDevicePowerOffClicked:" target="LDw-nl-MKC" id="YG9-Lb-SEG"/>
                                         </connections>
                                     </menuItem>
                                 </items>
                             </menu>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="AK9-BT-s7J"/>
-                        <menuItem title="Preferences" id="EMi-Cy-PAk">
+                        <menuItem title="Preferences..." id="EMi-Cy-PAk">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="onPreferencesClicked:" target="LDw-nl-MKC" id="21r-cd-fOu"/>
@@ -718,6 +719,11 @@
                             </connections>
                         </menuItem>
                     </items>
+                    <connections>
+                        <outlet property="statusMenuItem" destination="lZ7-tL-iPp" id="PF8-eG-BCT"/>
+                        <outlet property="toggleMuteMenuItem" destination="C8B-eJ-zmL" id="IKe-oZ-tLQ"/>
+                        <outlet property="volumeSlider" destination="bmU-ZM-gFg" id="6e0-gy-uHl"/>
+                    </connections>
                 </menu>
                 <customView id="4se-V0-ZxZ">
                     <rect key="frame" x="0.0" y="0.0" width="243" height="35"/>
@@ -726,7 +732,7 @@
                         <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bmU-ZM-gFg">
                             <rect key="frame" x="18" y="8" width="207" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="10" tickMarkPosition="below" sliderType="linear" id="Gjs-Lq-gG3"/>
+                            <sliderCell key="cell" state="on" alignment="left" minValue="-700" maxValue="-450" doubleValue="-700" tickMarkPosition="below" sliderType="linear" id="Gjs-Lq-gG3"/>
                             <connections>
                                 <action selector="onVolumeHasChanged:" target="LDw-nl-MKC" id="A4F-8H-tIs"/>
                             </connections>

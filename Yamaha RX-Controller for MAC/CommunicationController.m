@@ -8,14 +8,12 @@
 
 #import "CommunicationController.h"
 #import "AFHTTPSessionManager.h"
-#import "StatusBarMenu.h"
 
 @implementation CommunicationController
 
 -(id) init {
     if(self = [super init]) {
         self.ip = @"http://192.168.178.26";
-        //self.statusMenu = [[StatusBarMenu alloc] init];
     }
     
     return self;
@@ -45,12 +43,9 @@
             NSDictionary *dict = [XMLReader dictionaryForXMLData:data
                                                      options:XMLReaderOptionsProcessNamespaces
                                                        error:&parseerror];
-            
-//            [self.statusMenu menuWillOpenCompletionHandler:dict];
         }
         else {
             NSLog(@"Error: %@", error);
-//            [self.statusMenu menuWillOpenCompletionHandler:nil];
         }
     }];
     
@@ -121,9 +116,7 @@
     NSError *error = nil;
     NSDictionary *dict = [XMLReader dictionaryForXMLData:data
                                                  options:XMLReaderOptionsProcessNamespaces
-                                                   error:&error];
-    
-    
+                                                   error:&error]; 
 }
 
 
