@@ -682,8 +682,6 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
                     <connections>
                         <outlet property="statusMenu" destination="LDw-nl-MKC" id="PV4-aL-RAr"/>
-                        <outlet property="volumeSliderItem" destination="BCv-fW-jWt" id="np6-se-eqF"/>
-                        <outlet property="volumeSliderView" destination="4se-V0-ZxZ" id="6lw-1L-ADB"/>
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -692,7 +690,7 @@
                         <menuItem title="Connecting..." enabled="NO" id="lZ7-tL-iPp">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
-                        <menuItem isSeparatorItem="YES" id="LKb-9L-PWP"/>
+                        <menuItem isSeparatorItem="YES" id="LKb-9L-PWP" userLabel="-----------------"/>
                         <menuItem title="Volume:" enabled="NO" id="3mX-J8-Ert">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
@@ -705,12 +703,12 @@
                                 <action selector="onToggleMuteClicked:" target="LDw-nl-MKC" id="GJO-qJ-EfQ"/>
                             </connections>
                         </menuItem>
-                        <menuItem isSeparatorItem="YES" id="sh8-Kr-KG2"/>
+                        <menuItem isSeparatorItem="YES" id="sh8-Kr-KG2" userLabel="-----------------"/>
                         <menuItem title="Device" id="sJJ-2H-GCY">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Device" id="SfH-Kn-Oug">
                                 <items>
-                                    <menuItem title="Devicename" enabled="NO" id="2xJ-xr-6Ww">
+                                    <menuItem title="No device connected" enabled="NO" id="2xJ-xr-6Ww">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem isSeparatorItem="YES" id="x3D-ZM-hI7"/>
@@ -729,7 +727,7 @@
                                 </items>
                             </menu>
                         </menuItem>
-                        <menuItem isSeparatorItem="YES" id="AK9-BT-s7J"/>
+                        <menuItem isSeparatorItem="YES" id="AK9-BT-s7J" userLabel="-----------------"/>
                         <menuItem title="Preferences..." id="EMi-Cy-PAk">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
@@ -744,10 +742,15 @@
                         </menuItem>
                     </items>
                     <connections>
+                        <outlet property="deviceInfoMenuItem" destination="2xJ-xr-6Ww" id="t1t-l7-nri"/>
                         <outlet property="deviceMenuItem" destination="sJJ-2H-GCY" id="oY4-Ph-7qI"/>
+                        <outlet property="devicePowerOffMenuItem" destination="AXI-h2-x71" id="dK1-AA-zr6"/>
+                        <outlet property="devicePowerOnMenuItem" destination="5zk-cJ-t97" id="2mZ-b0-03w"/>
                         <outlet property="statusMenuItem" destination="lZ7-tL-iPp" id="PF8-eG-BCT"/>
                         <outlet property="toggleMuteMenuItem" destination="C8B-eJ-zmL" id="YND-8z-bYM"/>
                         <outlet property="volumeSlider" destination="bmU-ZM-gFg" id="6e0-gy-uHl"/>
+                        <outlet property="volumeSliderItem" destination="BCv-fW-jWt" id="OWi-fH-HOL"/>
+                        <outlet property="volumeSliderView" destination="4se-V0-ZxZ" id="CKy-dk-WMT"/>
                     </connections>
                 </menu>
                 <customView id="4se-V0-ZxZ">
