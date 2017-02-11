@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		27615791B7C0EB1408E99912 /* libPods-Yamaha RX-Controller for MAC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9F6560C9E0FD11906008 /* libPods-Yamaha RX-Controller for MAC.a */; };
+		BF2AAE461E4E4D21006B140D /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2AAE441E4E4D21006B140D /* PreferencesWindowController.m */; };
+		BF2AAE471E4E4D21006B140D /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2AAE451E4E4D21006B140D /* PreferencesWindowController.xib */; };
 		BFCF10231E4B3A2E005555F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10221E4B3A2E005555F9 /* AppDelegate.m */; };
 		BFCF10261E4B3A2E005555F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10251E4B3A2E005555F9 /* main.m */; };
 		BFCF10291E4B3A2E005555F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10281E4B3A2E005555F9 /* ViewController.m */; };
@@ -22,6 +24,9 @@
 /* Begin PBXFileReference section */
 		218E9F6560C9E0FD11906008 /* libPods-Yamaha RX-Controller for MAC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yamaha RX-Controller for MAC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFD4836EAAC549105506562 /* Pods-Yamaha RX-Controller for MAC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yamaha RX-Controller for MAC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yamaha RX-Controller for MAC/Pods-Yamaha RX-Controller for MAC.debug.xcconfig"; sourceTree = "<group>"; };
+		BF2AAE431E4E4D21006B140D /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		BF2AAE441E4E4D21006B140D /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		BF2AAE451E4E4D21006B140D /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		BFCF101E1E4B3A2E005555F9 /* Yamaha RX-Controller for MAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yamaha RX-Controller for MAC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCF10211E4B3A2E005555F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BFCF10221E4B3A2E005555F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -102,6 +107,9 @@
 				BFE2F2AC1E4B9DEF001F7437 /* StatusBarMenu.m */,
 				BFCF102A1E4B3A2E005555F9 /* Assets.xcassets */,
 				BFCF102C1E4B3A2E005555F9 /* Main.storyboard */,
+				BF2AAE431E4E4D21006B140D /* PreferencesWindowController.h */,
+				BF2AAE441E4E4D21006B140D /* PreferencesWindowController.m */,
+				BF2AAE451E4E4D21006B140D /* PreferencesWindowController.xib */,
 				BFCF102F1E4B3A2E005555F9 /* Info.plist */,
 				BFE6E0361E4B7AC000090B12 /* XMLReader.h */,
 				BFE6E0371E4B7AC000090B12 /* XMLReader.m */,
@@ -189,6 +197,7 @@
 			files = (
 				BFCF102B1E4B3A2E005555F9 /* Assets.xcassets in Resources */,
 				BFCF102E1E4B3A2E005555F9 /* Main.storyboard in Resources */,
+				BF2AAE471E4E4D21006B140D /* PreferencesWindowController.xib in Resources */,
 				BFFB1E691E4C75AB009EADC9 /* Podfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +260,7 @@
 				BFE2F2AD1E4B9DEF001F7437 /* StatusBarMenu.m in Sources */,
 				BFCF10291E4B3A2E005555F9 /* ViewController.m in Sources */,
 				BFCF10261E4B3A2E005555F9 /* main.m in Sources */,
+				BF2AAE461E4E4D21006B140D /* PreferencesWindowController.m in Sources */,
 				BFCF10371E4B3E4C005555F9 /* CommunicationController.m in Sources */,
 				BFE6E0381E4B7AC000090B12 /* XMLReader.m in Sources */,
 				BFCF10231E4B3A2E005555F9 /* AppDelegate.m in Sources */,

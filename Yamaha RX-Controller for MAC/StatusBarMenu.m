@@ -9,6 +9,7 @@
 #import "StatusBarMenu.h"
 #import "CommunicationController.h"
 #import "AFHTTPSessionManager.h"
+#import "PreferencesWindowController.h"
 
 @implementation StatusBarMenu
 
@@ -37,6 +38,8 @@
     
     // Finally get volume information
     [self getVolumeInformation];
+    
+//    [self getDeviceInformation];
 }
 
 // Recieves Volume information and applies visual changes depending on the recieved information
@@ -122,7 +125,9 @@
 }
 
 - (IBAction)onPreferencesClicked:(id)sender {
- 
+    PreferencesWindowController *prefWindowController = [[PreferencesWindowController alloc] initWithWindowNibName: @"PreferencesWindowController"];
+    
+    [prefWindowController showWindow:self];
 }
 
 - (IBAction)onQuitPressed:(id)sender {

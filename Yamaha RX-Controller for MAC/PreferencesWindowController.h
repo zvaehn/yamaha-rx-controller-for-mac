@@ -10,4 +10,7 @@
 
 @interface PreferencesWindowController : NSWindowController
 
+@property (weak) IBOutlet NSView *preferencesView;
+
+
 @end
