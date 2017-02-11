@@ -14,12 +14,21 @@
 
 @property CommunicationController *comctrl;
 @property BOOL isConnected;
+@property NSString *powerStatus;
+@property NSString *versionNumber;
+@property NSString *modelNumber;
 
+// Main Menu
 @property (weak) IBOutlet NSView *volumeSliderView;
 @property (weak) IBOutlet NSMenuItem *statusMenuItem;
 @property (weak) IBOutlet NSSlider *volumeSlider;
 @property (weak) IBOutlet NSMenuItem *toggleMuteMenuItem;
+
+// Device Submenu
 @property (weak) IBOutlet NSMenuItem *deviceMenuItem;
+@property (weak) IBOutlet NSMenuItem *deviceInfoMenuItem;
+@property (weak) IBOutlet NSMenuItem *devicePowerOnMenuItem;
+@property (weak) IBOutlet NSMenuItem *devicePowerOffMenuItem;
 
 - (IBAction)onVolumeHasChanged:(id)sender;
 - (IBAction)onToggleMuteClicked:(id)sender;

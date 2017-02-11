@@ -686,7 +686,7 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Device" id="SfH-Kn-Oug">
                                 <items>
-                                    <menuItem title="Devicename" enabled="NO" id="2xJ-xr-6Ww">
+                                    <menuItem title="No device connected" enabled="NO" id="2xJ-xr-6Ww">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem isSeparatorItem="YES" id="x3D-ZM-hI7"/>
@@ -720,7 +720,10 @@
                         </menuItem>
                     </items>
                     <connections>
+                        <outlet property="deviceInfoMenuItem" destination="2xJ-xr-6Ww" id="t1t-l7-nri"/>
                         <outlet property="deviceMenuItem" destination="sJJ-2H-GCY" id="oY4-Ph-7qI"/>
+                        <outlet property="devicePowerOffMenuItem" destination="AXI-h2-x71" id="dK1-AA-zr6"/>
+                        <outlet property="devicePowerOnMenuItem" destination="5zk-cJ-t97" id="2mZ-b0-03w"/>
                         <outlet property="statusMenuItem" destination="lZ7-tL-iPp" id="PF8-eG-BCT"/>
                         <outlet property="toggleMuteMenuItem" destination="C8B-eJ-zmL" id="YND-8z-bYM"/>
                         <outlet property="volumeSlider" destination="bmU-ZM-gFg" id="6e0-gy-uHl"/>
