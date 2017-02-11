@@ -57,6 +57,9 @@
 }
 
 - (void)menuWillOpen:(NSMenu *)menu {
+    // Assign custom view to menu item
+    [self.volumeSliderItem setView:self.volumeSliderView];
+    
     [self.statusMenuItem setTitle:@"Connecting..."];
     
     [self updateMenuAppearance];

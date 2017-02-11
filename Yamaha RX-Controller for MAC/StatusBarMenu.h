@@ -23,6 +23,7 @@
 @property (weak) IBOutlet NSMenuItem *statusMenuItem;
 @property (weak) IBOutlet NSSlider *volumeSlider;
 @property (weak) IBOutlet NSMenuItem *toggleMuteMenuItem;
+@property (weak) IBOutlet NSMenuItem *volumeSliderItem;
 
 // Device Submenu
 @property (weak) IBOutlet NSMenuItem *deviceMenuItem;
