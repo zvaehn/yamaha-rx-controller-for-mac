@@ -205,9 +205,7 @@
 }
 
 - (IBAction)onPreferencesClicked:(id)sender {
-    PreferencesWindowController *prefWindowController = [[PreferencesWindowController alloc] initWithWindowNibName: @"PreferencesWindowController"];
-    
-    [prefWindowController showWindow:self];
+    self.prefWinCon = [[PreferencesWindowController alloc] init];
 }
 
 - (IBAction)onQuitPressed:(id)sender {

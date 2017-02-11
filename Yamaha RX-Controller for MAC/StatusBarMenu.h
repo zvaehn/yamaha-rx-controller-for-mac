@@ -9,14 +9,17 @@
 #import <Cocoa/Cocoa.h>
 #import "CommunicationController.h"
 #import "StatusBarMenu.h"
+#import "PreferencesWindowController.h"
 
 @interface StatusBarMenu : NSMenu <NSMenuDelegate>
 
 @property CommunicationController *comctrl;
+@property PreferencesWindowController *prefWinCon;
 @property BOOL isConnected;
 @property NSString *powerStatus;
 @property NSString *versionNumber;
 @property NSString *modelNumber;
+
 
 // Main Menu
 @property (weak) IBOutlet NSView *volumeSliderView;

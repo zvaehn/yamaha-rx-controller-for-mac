@@ -13,13 +13,6 @@
 
 @property (strong, nonatomic) NSStatusItem *statusBar;
 @property (weak) IBOutlet StatusBarMenu *statusMenu;
-@property (weak) IBOutlet NSMenuItem *volumeSliderItem;
-@property (weak) IBOutlet NSView *volumeSliderView;
-
-- (IBAction)onDevicePowerOnPressed:(id)sender;
-- (IBAction)onDevicePowerOffPressed:(id)sender;
-
-
 
 @end
 

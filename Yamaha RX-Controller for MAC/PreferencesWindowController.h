@@ -13,4 +13,11 @@
 @property (weak) IBOutlet NSView *preferencesView;
 
 
+@property (weak) IBOutlet NSTextField *ipTextField;
+@property (weak) IBOutlet NSTextField *statusLabel;
+
+- (IBAction)onCancelPressed:(id)sender;
+- (IBAction)onApplyPressed:(id)sender;
+
+
 @end

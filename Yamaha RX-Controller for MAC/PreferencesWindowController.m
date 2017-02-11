@@ -16,6 +16,9 @@
 
 -(id) init {
     self = [super initWithWindowNibName:@"PreferencesWindowController"];
+    
+    [self showWindow:self.preferencesView];
+        
     if(self == nil){
         return nil;
     }
@@ -25,15 +28,17 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
-//    [NSApp activateIgnoringOtherApps:YES];
-    
-    //Open the preferences Window
-    [self showWindow:self.preferencesView];
-    
-    
-    NSLog(@"pref loaded");
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [NSApp activateIgnoringOtherApps:YES];
 }
 
+- (IBAction)onCancelPressed:(id)sender {
+    NSWindow *window = [[NSApplication sharedApplication] keyWindow];
+    [window close];
+    [self close];
+}
+
+- (IBAction)onApplyPressed:(id)sender {
+    
+    
+}
 @end
