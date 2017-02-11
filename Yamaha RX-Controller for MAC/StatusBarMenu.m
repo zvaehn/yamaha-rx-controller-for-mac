@@ -21,7 +21,7 @@
     
     [self.statusMenuItem setEnabled:NO];
     [self.volumeSlider setEnabled:NO];
-    [self.toggleMuteMenuItem setEnabled:NO];
+    [self.toggleMuteMenuItem setHidden:YES];
     [self setMenuItemToBold:NO forMenuItem:self.deviceMenuItem];
     
     // Device Submenu items
@@ -41,7 +41,7 @@
             [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Connected: %@", self.modelNumber]];
             [self setMenuItemToBold:YES forMenuItem:self.deviceMenuItem];
             [self.volumeSlider setEnabled:YES];
-            [self.toggleMuteMenuItem setEnabled:YES];
+            [self.toggleMuteMenuItem setHidden:NO];
             [self.devicePowerOnMenuItem setHidden: YES];
             [self.devicePowerOffMenuItem setHidden: NO];
         }
