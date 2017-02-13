@@ -25,8 +25,12 @@
 @property (weak) IBOutlet NSView *volumeSliderView;
 @property (weak) IBOutlet NSMenuItem *statusMenuItem;
 @property (weak) IBOutlet NSSlider *volumeSlider;
-@property (weak) IBOutlet NSMenuItem *toggleMuteMenuItem;
+@property (weak) IBOutlet NSMenuItem *volumeStatusMenuItem;
 @property (weak) IBOutlet NSMenuItem *volumeSliderItem;
+@property (weak) IBOutlet NSMenuItem *toggleMuteMenuItem;
+@property (weak) IBOutlet NSMenuItem *playControlMenuItem;
+@property (weak) IBOutlet NSView *playControlView;
+
 
 // Device Submenu
 @property (weak) IBOutlet NSMenuItem *deviceMenuItem;
@@ -40,6 +44,10 @@
 - (IBAction)onQuitPressed:(id)sender;
 - (IBAction)onDevicePowerOnClicked:(id)sender;
 - (IBAction)onDevicePowerOffClicked:(id)sender;
+- (IBAction)onPrevButtonClicked:(id)sender;
+- (IBAction)onPauseButtonClicked:(id)sender;
+- (IBAction)onPlayButtonClicked:(id)sender;
+- (IBAction)onNextButtonClicked:(id)sender;
 
 
 

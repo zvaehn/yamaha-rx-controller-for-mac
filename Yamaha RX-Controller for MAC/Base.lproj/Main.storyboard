@@ -673,6 +673,9 @@
                         <menuItem title="----[]------------" enabled="NO" id="BCv-fW-jWt">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
+                        <menuItem title="[&lt;&lt;] [play/pause] [&gt;&gt;]" hidden="YES" enabled="NO" id="oba-y8-YSP">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
                         <menuItem title="Mute Audio" enabled="NO" id="C8B-eJ-zmL">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
@@ -722,11 +725,14 @@
                         <outlet property="deviceMenuItem" destination="sJJ-2H-GCY" id="oY4-Ph-7qI"/>
                         <outlet property="devicePowerOffMenuItem" destination="AXI-h2-x71" id="dK1-AA-zr6"/>
                         <outlet property="devicePowerOnMenuItem" destination="5zk-cJ-t97" id="2mZ-b0-03w"/>
+                        <outlet property="playControlMenuItem" destination="oba-y8-YSP" id="3r6-o3-4Zx"/>
+                        <outlet property="playControlView" destination="Fji-6a-7w8" id="kgw-6I-5ie"/>
                         <outlet property="statusMenuItem" destination="lZ7-tL-iPp" id="PF8-eG-BCT"/>
                         <outlet property="toggleMuteMenuItem" destination="C8B-eJ-zmL" id="YND-8z-bYM"/>
                         <outlet property="volumeSlider" destination="bmU-ZM-gFg" id="6e0-gy-uHl"/>
                         <outlet property="volumeSliderItem" destination="BCv-fW-jWt" id="OWi-fH-HOL"/>
                         <outlet property="volumeSliderView" destination="4se-V0-ZxZ" id="CKy-dk-WMT"/>
+                        <outlet property="volumeStatusMenuItem" destination="3mX-J8-Ert" id="Rml-Dn-8KL"/>
                     </connections>
                 </menu>
                 <customView id="4se-V0-ZxZ">
@@ -736,15 +742,71 @@
                         <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bmU-ZM-gFg">
                             <rect key="frame" x="18" y="8" width="207" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <sliderCell key="cell" state="on" alignment="left" minValue="-700" maxValue="-450" doubleValue="-700" tickMarkPosition="below" sliderType="linear" id="Gjs-Lq-gG3"/>
+                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="-700" maxValue="-450" doubleValue="-700" tickMarkPosition="below" sliderType="linear" id="Gjs-Lq-gG3"/>
                             <connections>
                                 <action selector="onVolumeHasChanged:" target="LDw-nl-MKC" id="A4F-8H-tIs"/>
                             </connections>
                         </slider>
                     </subviews>
                 </customView>
+                <customView id="Fji-6a-7w8" userLabel="PlayControl View">
+                    <rect key="frame" x="0.0" y="0.0" width="217" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jrf-RY-CV4">
+                            <rect key="frame" x="20" y="10" width="16" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="prev-icon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="11W-PZ-kBJ">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="onPrevButtonClicked:" target="LDw-nl-MKC" id="pLK-VU-YZ3"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68B-4b-vyh">
+                            <rect key="frame" x="55" y="10" width="16" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="pause-icon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="r5F-5a-7cH">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="onPauseButtonClicked:" target="LDw-nl-MKC" id="cPf-7S-iPT"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pNb-qC-cwJ">
+                            <rect key="frame" x="90" y="10" width="16" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="play-icon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ScT-X1-6Fr">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="onPlayButtonClicked:" target="LDw-nl-MKC" id="nqc-vH-cEb"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UL8-FA-qz2">
+                            <rect key="frame" x="125" y="10" width="16" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="next-icon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="4uD-f9-5Uu">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="onNextButtonClicked:" target="LDw-nl-MKC" id="KG6-Ye-jkS"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
             </objects>
             <point key="canvasLocation" x="42" y="-247"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="next-icon" width="32" height="32"/>
+        <image name="pause-icon" width="32" height="32"/>
+        <image name="play-icon" width="32" height="32"/>
+        <image name="prev-icon" width="32" height="32"/>
+    </resources>
 </document>

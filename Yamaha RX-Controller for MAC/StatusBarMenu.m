@@ -60,13 +60,13 @@
 - (void)menuWillOpen:(NSMenu *)menu {
     // Assign custom view to menu item
     [self.volumeSliderItem setView:self.volumeSliderView];
+
+    //    [self.playControlMenuItem setView:self.playControlView];
     
     [self.statusMenuItem setTitle:@"Connecting..."];
     
     [self updateMenuAppearance];
     [self getVolumeInformation];
-    
-//    [self getDeviceInformation];
 }
 
 -(void)getSystemConfig {
@@ -155,6 +155,7 @@
             
             // Set slider Volume
             [self.volumeSlider setDoubleValue:[volLevel doubleValue]];
+            [self.volumeStatusMenuItem setTitle:[NSString stringWithFormat:@"Volume: %.1f dB", ([volLevel doubleValue]/10)]];
             
             // Set Mute status
             NSString *mute = [volume valueForKeyPath:@"Mute.text"];
@@ -182,15 +183,33 @@
 }
 
 - (IBAction)onVolumeHasChanged:(id)sender {
+    NSEvent *event = [[NSApplication sharedApplication] currentEvent];
+    BOOL startingDrag = event.type == NSEventTypeLeftMouseDown;
+    BOOL endingDrag = event.type == NSEventTypeLeftMouseUp;
+    BOOL dragging = event.type == NSEventTypeLeftMouseDragged;
+    
     double rawSiderValue = [sender doubleValue];
     double sliderValue = rawSiderValue/10;
     double roundedSliderValue = round(sliderValue * 2.0) / 2.0; // round to 0, 0.5, 1 ...
     int dbValue = (roundedSliderValue * 10);
     
-    [self.comctrl sendCommand: [NSString stringWithFormat: @"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Volume><Lvl><Val>%d</Val><Exp>1</Exp><Unit>dB</Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>", dbValue]];
+    NSAssert(startingDrag || endingDrag || dragging, @"unexpected event type caused slider change: %@", event);
     
-    // Force the menu to close itself. This is necessary due to sendCommand limitations :/
-    [self cancelTracking];
+    // Slider startet dragging
+    if (startingDrag) {
+        
+    }
+    
+    // do whatever needs to be done for "uncommitted" changes
+    [self.volumeStatusMenuItem setTitle:[NSString stringWithFormat:@"Volume: %.1f dB", roundedSliderValue]];
+
+    // Slide value has been selected after mouse release
+    if (endingDrag) {
+        [self.comctrl sendCommand: [NSString stringWithFormat: @"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Volume><Lvl><Val>%d</Val><Exp>1</Exp><Unit>dB</Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>", dbValue]];
+        
+        // Force the menu to close itself. This is necessary due to sendCommand limitations :/
+        [self cancelTracking];
+    }
 }
 
 - (IBAction)onToggleMuteClicked:(id)sender {
@@ -212,13 +231,34 @@
      [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
 }
 
+- (IBAction)onDevicePowerOnClicked:(id)sender {
+    [self.comctrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Power_Control><Power>On</Power></Power_Control></Main_Zone></YAMAHA_AV>"];
+}
+
 - (IBAction)onDevicePowerOffClicked:(id)sender {
     [self.comctrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Power_Control><Power>Standby</Power></Power_Control></Main_Zone></YAMAHA_AV>"];
 }
 
-- (IBAction)onDevicePowerOnClicked:(id)sender {
-    [self.comctrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Power_Control><Power>On</Power></Power_Control></Main_Zone></YAMAHA_AV>"];
+- (IBAction)onPrevButtonClicked:(id)sender {
+    [self.comctrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Play_Control><Playback>Skip Rev</Playback></Play_Control></Main_Zone></YAMAHA_AV>"];
+    [self cancelTracking];
 }
+
+- (IBAction)onPauseButtonClicked:(id)sender {
+    [self.comctrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Play_Control><Playback>Pause</Playback></Play_Control></Main_Zone></YAMAHA_AV>"];
+    [self cancelTracking];
+}
+
+- (IBAction)onPlayButtonClicked:(id)sender {
+     [self.comctrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Play_Control><Playback>Play</Playback></Play_Control></Main_Zone></YAMAHA_AV>"];
+    [self cancelTracking];
+}
+
+- (IBAction)onNextButtonClicked:(id)sender {
+    [self.comctrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Play_Control><Playback>Skip Fwd<</Playback></Play_Control></Main_Zone></YAMAHA_AV>"];
+    [self cancelTracking];
+}
+
 
 
 - (void)setMenuItemToBold:(bool)bold forMenuItem:(NSMenuItem *)menuItem {
