@@ -19,6 +19,8 @@
 @property NSString *powerStatus;
 @property NSString *versionNumber;
 @property NSString *modelNumber;
+
+@property NSRange *volumeRange;
 @property NSString *recieverIp;
 @property NSUserDefaults *userDefaults;
 

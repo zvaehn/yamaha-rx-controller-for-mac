@@ -67,8 +67,8 @@
     [self.volumeSliderItem setView:self.volumeSliderView];
 
     //    [self.playControlMenuItem setView:self.playControlView];
-    self.recieverIp = [self.userDefaults stringForKey:@"reciever-ip"];
     
+    self.recieverIp = [self.userDefaults stringForKey:@"reciever-ip"];
     [self.statusMenuItem setTitle:@"Connecting..."];
     
     [self updateMenuAppearance];
@@ -210,9 +210,6 @@
         
     }
     
-    // do whatever needs to be done for "uncommitted" changes
-    [self.volumeStatusMenuItem setTitle:[NSString stringWithFormat:@"Volume: %.1f dB", roundedSliderValue]];
-
     // Slide value has been selected after mouse release
     if (endingDrag) {
         [self.comctrl sendCommand: [NSString stringWithFormat: @"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Volume><Lvl><Val>%d</Val><Exp>1</Exp><Unit>dB</Unit></Lvl></Volume></Main_Zone></YAMAHA_AV>", dbValue]];
@@ -220,6 +217,8 @@
         // Force the menu to close itself. This is necessary due to sendCommand limitations :/
         [self cancelTracking];
     }
+    
+    [self.volumeStatusMenuItem setTitle:[NSString stringWithFormat:@"Volume: %.1f dB ", roundedSliderValue]];
 }
 
 - (IBAction)onToggleMuteClicked:(id)sender {
