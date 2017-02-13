@@ -12,7 +12,11 @@
 
 @property (weak) IBOutlet NSView *preferencesView;
 
+// Defaults declarations
+@property NSString *defaultsRecieverIpKey;
 
+
+@property NSUserDefaults *userDefaults;
 @property (weak) IBOutlet NSTextField *ipTextField;
 @property (weak) IBOutlet NSTextField *statusLabel;
 

@@ -16,6 +16,7 @@
 - (void)awakeFromNib {
     self.comctrl = [[CommunicationController alloc] init];
     self.isConnected = NO;
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
 }
 
 - (void) updateMenuAppearance {
@@ -51,6 +52,10 @@
             NSLog(@"else in powerstatus: %@", self.powerStatus);
         }
     }
+    else {
+        [self.volumeStatusMenuItem setTitle:@"Volume: -"];
+        [self.devicePowerOnMenuItem setEnabled:NO];
+    }
 }
 
 - (void)menuDidClose:(NSMenu *)menu {
@@ -62,6 +67,7 @@
     [self.volumeSliderItem setView:self.volumeSliderView];
 
     //    [self.playControlMenuItem setView:self.playControlView];
+    self.recieverIp = [self.userDefaults stringForKey:@"reciever-ip"];
     
     [self.statusMenuItem setTitle:@"Connecting..."];
     
@@ -72,8 +78,10 @@
 -(void)getSystemConfig {
     NSString *xml = @"<YAMAHA_AV cmd=\"GET\"><System><Config>GetParam</Config></System></YAMAHA_AV>";
     
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/YamahaRemoteControl/ctrl", self.recieverIp];
+    
     // Start the request
-    NSMutableURLRequest *urlrequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://192.168.178.26/YamahaRemoteControl/ctrl" parameters:nil error:nil];
+    NSMutableURLRequest *urlrequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:nil error:nil];
     [urlrequest setTimeoutInterval:5];
     [urlrequest setHTTPBody:[NSKeyedArchiver archivedDataWithRootObject:xml]];
     
@@ -121,8 +129,10 @@
 -(void)getVolumeInformation {
     NSString *xml = @"<YAMAHA_AV cmd=\"GET\"><Main_Zone><Basic_Status>GetParam</Basic_Status></Main_Zone></YAMAHA_AV>";
     
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/YamahaRemoteControl/ctrl", self.recieverIp];
+    
     // Start the request
-    NSMutableURLRequest *urlrequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://192.168.178.26/YamahaRemoteControl/ctrl" parameters:nil error:nil];
+    NSMutableURLRequest *urlrequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:nil error:nil];
     [urlrequest setTimeoutInterval:5];
     [urlrequest setHTTPBody:[NSKeyedArchiver archivedDataWithRootObject:xml]];
     

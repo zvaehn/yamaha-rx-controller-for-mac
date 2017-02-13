@@ -16,6 +16,7 @@
 
 -(id) init {
     self = [super initWithWindowNibName:@"PreferencesWindowController"];
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
     
     [self showWindow:self.preferencesView];
         
@@ -29,6 +30,12 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     [NSApp activateIgnoringOtherApps:YES];
+    
+    NSString *recieverIp = [self.userDefaults stringForKey:@"reciever-ip"];
+    
+    if(recieverIp) {
+        [self.ipTextField setStringValue:recieverIp];
+    }
 }
 
 - (IBAction)onCancelPressed:(id)sender {
@@ -38,7 +45,14 @@
 }
 
 - (IBAction)onApplyPressed:(id)sender {
+    NSString *recieverIp = [self.ipTextField stringValue];
     
+    [self.userDefaults setObject: recieverIp forKey:@"reciever-ip"];
+    [self.userDefaults synchronize];
     
+    NSWindow *window = [[NSApplication sharedApplication] keyWindow];
+    [window close];
+    [self close];
 }
+
 @end

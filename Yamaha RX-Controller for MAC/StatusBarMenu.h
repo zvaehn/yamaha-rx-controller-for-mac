@@ -19,6 +19,8 @@
 @property NSString *powerStatus;
 @property NSString *versionNumber;
 @property NSString *modelNumber;
+@property NSString *recieverIp;
+@property NSUserDefaults *userDefaults;
 
 
 // Main Menu

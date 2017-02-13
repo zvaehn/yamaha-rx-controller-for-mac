@@ -687,10 +687,6 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Device" id="SfH-Kn-Oug">
                                 <items>
-                                    <menuItem title="No device connected" enabled="NO" id="2xJ-xr-6Ww">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem isSeparatorItem="YES" id="x3D-ZM-hI7"/>
                                     <menuItem title="Power On" id="5zk-cJ-t97">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
@@ -702,6 +698,10 @@
                                         <connections>
                                             <action selector="onDevicePowerOffClicked:" target="LDw-nl-MKC" id="YG9-Lb-SEG"/>
                                         </connections>
+                                    </menuItem>
+                                    <menuItem isSeparatorItem="YES" id="x3D-ZM-hI7"/>
+                                    <menuItem title="No device connected" enabled="NO" id="2xJ-xr-6Ww">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                 </items>
                             </menu>
