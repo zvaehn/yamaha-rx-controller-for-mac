@@ -35,6 +35,8 @@
     if(self.isConnected) {
         // Device Submenu items
         if([self.powerStatus isEqualToString:@"Standby"]) {
+            [self.volumeSlider setDoubleValue: [self.volumeSlider minValue]];
+            [self.volumeStatusMenuItem setTitle:@"Volume: -"];
             [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Standby: %@", self.modelNumber]];
             [self.devicePowerOnMenuItem setHidden: NO];
             [self.devicePowerOffMenuItem setHidden: YES];
@@ -53,6 +55,7 @@
         }
     }
     else {
+        [self.volumeSlider setDoubleValue: [self.volumeSlider minValue]];
         [self.volumeStatusMenuItem setTitle:@"Volume: -"];
         [self.devicePowerOnMenuItem setEnabled:NO];
     }
