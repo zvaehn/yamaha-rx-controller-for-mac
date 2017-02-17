@@ -40,6 +40,7 @@
             [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Standby: %@", self.modelNumber]];
             [self.devicePowerOnMenuItem setHidden: NO];
             [self.devicePowerOffMenuItem setHidden: YES];
+            [self.sourceMenuItem setHidden:YES];
         }
         else if([self.powerStatus isEqualToString:@"On"]) {
             [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Connected: %@", self.modelNumber]];
@@ -48,6 +49,7 @@
             [self.toggleMuteMenuItem setHidden:NO];
             [self.devicePowerOnMenuItem setHidden: YES];
             [self.devicePowerOffMenuItem setHidden: NO];
+            [self.sourceMenuItem setHidden:NO];
             
             // Init Submenu for Input sources
             NSMenu *inputSubmenu = [[NSMenu alloc] init];
