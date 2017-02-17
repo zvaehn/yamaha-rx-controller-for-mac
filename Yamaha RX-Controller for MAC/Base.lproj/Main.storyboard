@@ -706,6 +706,17 @@
                                 </items>
                             </menu>
                         </menuItem>
+                        <menuItem title="Source" id="1Tk-Ob-tWz">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="Source" id="Ne1-9g-CdQ">
+                                <items>
+                                    <menuItem title="Available Inputs" enabled="NO" id="lWh-Nr-yG9">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem isSeparatorItem="YES" id="vjA-pV-BMc"/>
+                                </items>
+                            </menu>
+                        </menuItem>
                         <menuItem isSeparatorItem="YES" id="AK9-BT-s7J" userLabel="-----------------"/>
                         <menuItem title="Preferences..." id="EMi-Cy-PAk">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -727,6 +738,7 @@
                         <outlet property="devicePowerOnMenuItem" destination="5zk-cJ-t97" id="2mZ-b0-03w"/>
                         <outlet property="playControlMenuItem" destination="oba-y8-YSP" id="3r6-o3-4Zx"/>
                         <outlet property="playControlView" destination="Fji-6a-7w8" id="kgw-6I-5ie"/>
+                        <outlet property="sourceMenuItem" destination="1Tk-Ob-tWz" id="ZTJ-kt-oXZ"/>
                         <outlet property="statusMenuItem" destination="lZ7-tL-iPp" id="PF8-eG-BCT"/>
                         <outlet property="toggleMuteMenuItem" destination="C8B-eJ-zmL" id="YND-8z-bYM"/>
                         <outlet property="volumeSlider" destination="bmU-ZM-gFg" id="6e0-gy-uHl"/>

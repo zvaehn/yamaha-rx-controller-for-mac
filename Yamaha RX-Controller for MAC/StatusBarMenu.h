@@ -19,11 +19,13 @@
 @property NSString *powerStatus;
 @property NSString *versionNumber;
 @property NSString *modelNumber;
+@property NSString *selectedInput;
+@property NSDictionary *availableInputs;
+@property NSDictionary *availableFeatures;
 
 @property NSRange *volumeRange;
 @property NSString *recieverIp;
 @property NSUserDefaults *userDefaults;
-
 
 // Main Menu
 @property (weak) IBOutlet NSView *volumeSliderView;
@@ -34,7 +36,7 @@
 @property (weak) IBOutlet NSMenuItem *toggleMuteMenuItem;
 @property (weak) IBOutlet NSMenuItem *playControlMenuItem;
 @property (weak) IBOutlet NSView *playControlView;
-
+@property (weak) IBOutlet NSMenuItem *sourceMenuItem;
 
 // Device Submenu
 @property (weak) IBOutlet NSMenuItem *deviceMenuItem;
