@@ -25,11 +25,11 @@
     [self.volumeSlider setEnabled:NO];
     [self.toggleMuteMenuItem setHidden:YES];
     [self setMenuItemToBold:NO forMenuItem:self.deviceMenuItem];
+    [self.sourceMenuItem setHidden:YES];
     
     // Device Submenu items
     [self.devicePowerOnMenuItem setHidden: NO];
     [self.devicePowerOffMenuItem setHidden: YES];
-
     
     // Enable items and set mark them as visible
     if(self.isConnected) {
@@ -40,7 +40,6 @@
             [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Standby: %@", self.modelNumber]];
             [self.devicePowerOnMenuItem setHidden: NO];
             [self.devicePowerOffMenuItem setHidden: YES];
-            [self.sourceMenuItem setHidden:YES];
         }
         else if([self.powerStatus isEqualToString:@"On"]) {
             [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Connected: %@", self.modelNumber]];
