@@ -10,11 +10,14 @@
 #import "CommunicationController.h"
 #import "StatusBarMenu.h"
 #import "PreferencesWindowController.h"
+#import "Device.h"
 
 @interface StatusBarMenu : NSMenu <NSMenuDelegate>
 
 @property CommunicationController *comctrl;
 @property PreferencesWindowController *prefWinCon;
+@property Device *device;
+
 @property BOOL isConnected;
 @property NSString *powerStatus;
 @property NSString *versionNumber;
@@ -22,9 +25,10 @@
 @property NSString *selectedInput;
 @property NSDictionary *availableInputs;
 @property NSDictionary *availableFeatures;
-
 @property NSRange *volumeRange;
 @property NSString *recieverIp;
+
+
 @property NSUserDefaults *userDefaults;
 
 // Main Menu

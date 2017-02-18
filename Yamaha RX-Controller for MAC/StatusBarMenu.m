@@ -10,13 +10,18 @@
 #import "CommunicationController.h"
 #import "AFHTTPSessionManager.h"
 #import "PreferencesWindowController.h"
+#import "Device.h"
 
 @implementation StatusBarMenu
 
 - (void)awakeFromNib {
     self.comctrl = [[CommunicationController alloc] init];
-    self.isConnected = NO;
     self.userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    // Device Setup
+    self.device = [[Device alloc] init];
+    self.device.ip = [self.userDefaults stringForKey:@"reciever-ip"];
+    self.device.ressourceURL = @"YamahaRemoteControl/ctrl";
 }
 
 - (void) updateMenuAppearance {
@@ -32,17 +37,17 @@
     [self.devicePowerOffMenuItem setHidden: YES];
     
     // Enable items and set mark them as visible
-    if(self.isConnected) {
+    if(self.device.isConnected) {
         // Device Submenu items
-        if([self.powerStatus isEqualToString:@"Standby"]) {
+        if([self.device isStandby]) {
             [self.volumeSlider setDoubleValue: [self.volumeSlider minValue]];
             [self.volumeStatusMenuItem setTitle:@"Volume: -"];
-            [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Standby: %@", self.modelNumber]];
+            [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Standby: %@", self.device.modelNumber]];
             [self.devicePowerOnMenuItem setHidden: NO];
             [self.devicePowerOffMenuItem setHidden: YES];
         }
-        else if([self.powerStatus isEqualToString:@"On"]) {
-            [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Connected: %@", self.modelNumber]];
+        else if([self.device isOnline]) {
+            [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Connected: %@", self.device.modelNumber]];
             [self setMenuItemToBold:YES forMenuItem:self.deviceMenuItem];
             [self.volumeSlider setEnabled:YES];
             [self.toggleMuteMenuItem setHidden:NO];
@@ -50,36 +55,11 @@
             [self.devicePowerOffMenuItem setHidden: NO];
             [self.sourceMenuItem setHidden:NO];
             
-            // Init Submenu for Input sources
-            NSMenu *inputSubmenu = [[NSMenu alloc] init];
-            
-            // Set Menu Items for Source Menu:
-            for (NSString* key in self.availableInputs) {
-                NSString *inputName = key;
-                NSString *inputDisplayName = [[self.availableInputs objectForKey:key] objectForKey:@"text"];
-                NSString *itemTitle = [NSString stringWithFormat:@"%@", inputDisplayName];
-                NSMenuItem *tmpMenuItem = [[NSMenuItem alloc]
-                                           initWithTitle:itemTitle
-                                           action:@selector(onInputChanged:)
-                                           keyEquivalent:@""];
-                
-                // Due to yamaha's function tree response inputs are different from the requested inputs -.- WOW.
-                NSString *expectedInputName = [inputName stringByReplacingOccurrencesOfString:@"_" withString:@""];
-                [tmpMenuItem setRepresentedObject: expectedInputName]; // Append a representationobject to the menuitem
-                [tmpMenuItem setTarget:self]; // _VERY_ important, otherwise menu items have no target and will stay disabled!!!
-                
-                if([expectedInputName isEqualToString:self.selectedInput]) {
-                    [tmpMenuItem setState:NSOnState];
-                }
-                
-                [inputSubmenu addItem:tmpMenuItem];
-            }
-            
-            [self.sourceMenuItem setSubmenu:inputSubmenu];
+            [self buildInputsSubmenu];
         }
         else {
             // Off ?
-            NSLog(@"else in powerstatus: %@", self.powerStatus);
+            NSLog(@"else in powerstatus: %@", self.device.powerStatus);
         }
     }
     else {
@@ -99,7 +79,6 @@
 
     //    [self.playControlMenuItem setView:self.playControlView];
     
-    self.recieverIp = [self.userDefaults stringForKey:@"reciever-ip"];
     [self.statusMenuItem setTitle:@"Connecting..."];
     
     [self updateMenuAppearance];
@@ -108,10 +87,9 @@
 
 -(void)getSystemConfig {
     NSString *xml = @"<YAMAHA_AV cmd=\"GET\"><System><Config>GetParam</Config></System></YAMAHA_AV>";
-    NSString *urlString = [NSString stringWithFormat:@"http://%@/YamahaRemoteControl/ctrl", self.recieverIp];
     
     // Start the request
-    NSMutableURLRequest *urlrequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:nil error:nil];
+    NSMutableURLRequest *urlrequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[self.device getFullAPIUrl] parameters:nil error:nil];
     [urlrequest setTimeoutInterval:5];
     [urlrequest setHTTPBody:[NSKeyedArchiver archivedDataWithRootObject:xml]];
     
@@ -133,33 +111,16 @@
                                                            error:&parseerror];
             
             // Get System config dictionary
-            NSDictionary *config = [dict valueForKeyPath:@"YAMAHA_AV.System.Config"];
-            
-            self.modelNumber = [config valueForKeyPath: @"Model_Name.text"];
-            self.versionNumber = [config valueForKeyPath: @"Version.text"];
-            
-            NSDictionary *unsortedInputs = [config valueForKeyPath:@"Name.Input"];
-            NSDictionary *unsortedFeatures = [config valueForKeyPath:@"Feature_Existence"];
-            
-            /*
-            NSArray *sortedKeys = [[unsortedInputs allKeys] sortedArrayUsingSelector: @selector(compare:)];
-            NSMutableArray *sortedValues = [NSMutableArray array];
-            
-            for (NSString *key in sortedKeys) {
-                [sortedValues addObject: [unsortedInputs objectForKey: key]];
-            }*/
-            
-            self.availableInputs = unsortedInputs;
-            self.availableFeatures = unsortedFeatures;
-            self.isConnected = YES;
+            [self.device setSystemConfig: [dict valueForKeyPath:@"YAMAHA_AV.System.Config"]];
+            self.device.isConnected = YES;
             
             [self.statusMenuItem setTitle:@"Status: Connected"];
-            [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Connected: %@", self.modelNumber]];
-            [self.deviceInfoMenuItem setTitle:[NSString stringWithFormat:@"Firmware Version: %@", self.versionNumber]];
+            [self.statusMenuItem setTitle:[NSString stringWithFormat:@"Connected: %@", self.device.modelNumber]];
+            [self.deviceInfoMenuItem setTitle:[NSString stringWithFormat:@"Firmware Version: %@", self.device.versionNumber]];
         }
         else {
             [self.statusMenuItem setTitle:@"Unable to connect."];
-            self.isConnected = NO;
+            self.device.isConnected = NO;
             
             NSLog(@"Error: %@", error);
         }
@@ -174,10 +135,8 @@
 -(void)getVolumeInformation {
     NSString *xml = @"<YAMAHA_AV cmd=\"GET\"><Main_Zone><Basic_Status>GetParam</Basic_Status></Main_Zone></YAMAHA_AV>";
     
-    NSString *urlString = [NSString stringWithFormat:@"http://%@/YamahaRemoteControl/ctrl", self.recieverIp];
-    
     // Start the request
-    NSMutableURLRequest *urlrequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:nil error:nil];
+    NSMutableURLRequest *urlrequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[self.device getFullAPIUrl] parameters:nil error:nil];
     [urlrequest setTimeoutInterval:5];
     [urlrequest setHTTPBody:[NSKeyedArchiver archivedDataWithRootObject:xml]];
     
@@ -198,38 +157,26 @@
                                                            error:&parseerror];
             
             
-            NSDictionary *basicStatus = [dict valueForKeyPath:@"YAMAHA_AV.Main_Zone.Basic_Status"];
-            NSDictionary *volume = [basicStatus valueForKeyPath:@"Volume"];
-            
-            self.powerStatus = [basicStatus valueForKeyPath:@"Power_Control.Power.text"];
-            self.isConnected = YES;
-            
-            // Get Current Input
-            self.selectedInput = [basicStatus valueForKeyPath:@"Input.Input_Sel.text"];
-            
-            // Get Volume
-            NSString *rawVolLevel = [volume valueForKeyPath:@"Lvl.Val.text"];
-            NSNumber *volLevel = [NSNumber numberWithInt: [rawVolLevel intValue]];
+            [self.device setBasicStatus:[dict valueForKeyPath:@"YAMAHA_AV.Main_Zone.Basic_Status"]];
             
             // Set slider Volume
-            [self.volumeSlider setDoubleValue:[volLevel doubleValue]];
-            [self.volumeStatusMenuItem setTitle:[NSString stringWithFormat:@"Volume: %.1f dB", ([volLevel doubleValue]/10)]];
+            [self.volumeSlider setDoubleValue:self.device.volume];
+            [self.volumeStatusMenuItem setTitle:[NSString stringWithFormat:@"Volume: %.1f dB", (self.device.volume/10)]];
             
-            // Set Mute status
-            NSString *mute = [volume valueForKeyPath:@"Mute.text"];
-            
-            if([mute isEqualToString:@"On"]) {
+            // Set Mute status            
+            if([self.device isMuted]) {
                 [self.toggleMuteMenuItem setState:1];
             }
             else {
                 [self.toggleMuteMenuItem setState:0];
             }
             
+            self.device.isConnected = YES;
             [self getSystemConfig];
         }
         else {
             [self.statusMenuItem setTitle:@"Unable to connect."];
-            self.isConnected = NO;
+            self.device.isConnected = NO;
             
             NSLog(@"Error: %@", error);
         }
@@ -244,6 +191,35 @@
     NSString *inputKey = [sender representedObject];
     
     [self.comctrl sendCommand: [NSString stringWithFormat: @"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Input><Input_Sel>%@</Input_Sel></Input></Main_Zone></YAMAHA_AV>", inputKey]];
+}
+
+- (void) buildInputsSubmenu {
+    // Init Submenu for Input sources
+    NSMenu *inputSubmenu = [[NSMenu alloc] init];
+    
+    NSMenuItem *inputHeadline = [[NSMenuItem alloc] initWithTitle:@"Inputs" action:nil keyEquivalent:@""];
+    [inputHeadline setEnabled:NO];
+    
+    // Set Menu Items for Source Menu:
+    for (NSString* key in [self.device getInputs]) {
+        NSMenuItem *tmpMenuItem = [[NSMenuItem alloc]
+                                   initWithTitle:key
+                                   action:@selector(onInputChanged:)
+                                   keyEquivalent:@""];
+        
+        // Due to yamaha's function tree response inputs are different from the requested inputs -.- WOW.
+        NSString *expectedInputName = [key stringByReplacingOccurrencesOfString:@"_" withString:@""];
+        [tmpMenuItem setRepresentedObject: expectedInputName]; // Append a representationobject to the menuitem
+        [tmpMenuItem setTarget:self]; // _VERY_ important, otherwise menu items have no target and will stay disabled!!!
+        
+        if([expectedInputName isEqualToString:self.device.selectedInput]) {
+            [tmpMenuItem setState:NSOnState];
+        }
+        
+        [inputSubmenu addItem:tmpMenuItem];
+    }
+    
+    [self.sourceMenuItem setSubmenu:inputSubmenu];
 }
 
 - (IBAction)onVolumeHasChanged:(id)sender {
@@ -321,7 +297,6 @@
     [self.comctrl sendCommand:@"<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Play_Control><Playback>Skip Fwd<</Playback></Play_Control></Main_Zone></YAMAHA_AV>"];
     [self cancelTracking];
 }
-
 
 
 - (void)setMenuItemToBold:(bool)bold forMenuItem:(NSMenuItem *)menuItem {

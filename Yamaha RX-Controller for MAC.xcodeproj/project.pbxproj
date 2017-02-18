@@ -10,6 +10,7 @@
 		27615791B7C0EB1408E99912 /* libPods-Yamaha RX-Controller for MAC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E9F6560C9E0FD11906008 /* libPods-Yamaha RX-Controller for MAC.a */; };
 		BF2AAE461E4E4D21006B140D /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2AAE441E4E4D21006B140D /* PreferencesWindowController.m */; };
 		BF2AAE471E4E4D21006B140D /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2AAE451E4E4D21006B140D /* PreferencesWindowController.xib */; };
+		BF2F2FE71E5731CB00A849E2 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F2FE61E5731CB00A849E2 /* Device.m */; };
 		BFCF10231E4B3A2E005555F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10221E4B3A2E005555F9 /* AppDelegate.m */; };
 		BFCF10261E4B3A2E005555F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10251E4B3A2E005555F9 /* main.m */; };
 		BFCF10291E4B3A2E005555F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCF10281E4B3A2E005555F9 /* ViewController.m */; };
@@ -27,6 +28,8 @@
 		BF2AAE431E4E4D21006B140D /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		BF2AAE441E4E4D21006B140D /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		BF2AAE451E4E4D21006B140D /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
+		BF2F2FE51E5731CB00A849E2 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		BF2F2FE61E5731CB00A849E2 /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
 		BFCF101E1E4B3A2E005555F9 /* Yamaha RX-Controller for MAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yamaha RX-Controller for MAC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCF10211E4B3A2E005555F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BFCF10221E4B3A2E005555F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -99,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				BFDB9FC21E4B4FF100781EA2 /* Yamaha RX-Controller for MAC.entitlements */,
+				BF2F2FE51E5731CB00A849E2 /* Device.h */,
+				BF2F2FE61E5731CB00A849E2 /* Device.m */,
 				BFCF10211E4B3A2E005555F9 /* AppDelegate.h */,
 				BFCF10221E4B3A2E005555F9 /* AppDelegate.m */,
 				BFCF10351E4B3E4C005555F9 /* CommunicationController.h */,
@@ -260,6 +265,7 @@
 				BFE2F2AD1E4B9DEF001F7437 /* StatusBarMenu.m in Sources */,
 				BFCF10291E4B3A2E005555F9 /* ViewController.m in Sources */,
 				BFCF10261E4B3A2E005555F9 /* main.m in Sources */,
+				BF2F2FE71E5731CB00A849E2 /* Device.m in Sources */,
 				BF2AAE461E4E4D21006B140D /* PreferencesWindowController.m in Sources */,
 				BFCF10371E4B3E4C005555F9 /* CommunicationController.m in Sources */,
 				BFE6E0381E4B7AC000090B12 /* XMLReader.m in Sources */,
