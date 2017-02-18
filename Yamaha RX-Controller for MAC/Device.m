@@ -70,8 +70,8 @@
     NSArray *sortedInputKeys = [[self.availableInputs allKeys] sortedArrayUsingSelector: @selector(compare:)];
     
     for (NSString *key in sortedInputKeys) {
-//        [sortedValues addObject: [self.availableInputs objectForKey: key]];
-        [sortedValues addObject: key];
+        [sortedValues addObject: [self.availableInputs objectForKey: key]];
+        //[sortedValues addObject: key];
     }
     
     return sortedValues;
